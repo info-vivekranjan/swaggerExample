@@ -8,8 +8,9 @@ const studentDetailsSchema = require("../model/studentDetails.model");
  *     Student:
  *       type: object
  *       required:
- *         - title
- *         - author
+ *         - name
+ *         - gender
+ *         - age
  *       properties:
  *         name:
  *           type: string
@@ -37,7 +38,7 @@ const studentDetailsSchema = require("../model/studentDetails.model");
  * @swagger
  * /studentDetails:
  *   post:
- *     summary: Create a new book
+ *     summary: Add a new student
  *     tags: [studentDetails]
  *     requestBody:
  *       required: true
@@ -67,11 +68,19 @@ router.post("/", async (req, res) => {
  *   get:
  *     summary: Returns the list of all the Students
  *     tags: [studentDetails]
+ *     collectionFormat: multi
  *     responses:
  *       200:
  *         description: The list of the students
+ *         produces:
+ *          -application/yaml
+ *          -application/json
+ *          -application/xml
  *         content:
  *           application/json:
+ *             schema:
+ *               type: array
+ *           application/yaml:
  *             schema:
  *               type: array
  *             items:

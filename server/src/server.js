@@ -16,7 +16,10 @@ const options = {
     info: {
       title: "StudentDB API",
       version: "1.0.0",
-      description: "A simple Express StudentDB API"
+      description: "A simple Express StudentDB API",
+      contact: {
+        name: "Amazing Developer"
+      }
     },
     servers: [
       {
@@ -25,7 +28,21 @@ const options = {
       {
         url: "http://localhost:5000"
       }
-    ]
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
   apis: ["./src/controller/*.js"]
 };
